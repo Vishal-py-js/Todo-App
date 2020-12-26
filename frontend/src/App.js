@@ -18,7 +18,7 @@ function App() {
   }, [])
 
   const fetchTasks = async() => {
-    const res = await axios.get('http://127.0.0.1:8000/api/')
+    const res = await axios.get('https://todo-appfullstack.herokuapp.com/api/')
     const response = res.data
     setTodoList(response)
   }
@@ -48,10 +48,10 @@ function App() {
     e.preventDefault()
     let csrftoken = getCookie('csrftoken')
 
-    let url = 'http://127.0.0.1:8000/api/create/'
+    let url = 'https://todo-appfullstack.herokuapp.com/api/create/'
 
     if(editing==true) {
-      url = `http://127.0.0.1:8000/api/update/${activeItems.id}/`
+      url = `https://todo-appfullstack.herokuapp.com/api/update/${activeItems.id}/`
       setEditing(false)
     }
     await axios({
@@ -75,7 +75,7 @@ function App() {
     let csrftoken = getCookie('csrftoken')
 
     axios({
-      url: `http://127.0.0.1:8000/api/delete/${task.id}/`,
+      url: `https://todo-appfullstack.herokuapp.com/api/delete/${task.id}/`,
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',
@@ -89,7 +89,7 @@ function App() {
     task.completed = !task.completed
     let csrftoken = getCookie('csrftoken')
 
-    let url = `http://127.0.0.1:8000/api/update/${task.id}/`
+    let url = `https://todo-appfullstack.herokuapp.com/api/update/${task.id}/`
     axios({
       url: url,
       method: 'POST',

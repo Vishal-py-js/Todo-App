@@ -18,7 +18,7 @@ function Home() {
   }, [])
 
   const fetchTasks = async() => {
-    const res = await axios.get('http://127.0.0.1:8000/api/',{
+    const res = await axios.get('https://todo-appfullstack.herokuapp.com/api/',{
         headers:{
             'Authorization': `Token ${localStorage.getItem('Token')}`
             }
@@ -43,10 +43,10 @@ function Home() {
   const handleSubmit = async(e) => {
     e.preventDefault()
 
-    let url = 'http://127.0.0.1:8000/api/create/'
+    let url = 'https://todo-appfullstack.herokuapp.com/api/create/'
 
     if(editing==true) {
-      url = `http://127.0.0.1:8000/api/update/${activeItems.id}/`
+      url = `https://todo-appfullstack.herokuapp.com/${activeItems.id}/`
       setEditing(false)
     }
     await axios({
@@ -68,7 +68,7 @@ function Home() {
   const deleteItem = (task) => {
 
     axios({
-      url: `http://127.0.0.1:8000/api/delete/${task.id}/`,
+      url: `https://todo-appfullstack.herokuapp.com/api/delete/${task.id}/`,
       method: 'DELETE',
       headers:{
         'Authorization': `Token ${localStorage.getItem('Token')}`
@@ -80,7 +80,7 @@ function Home() {
   const strikeUnstrike = (task) => {
     task.completed = !task.completed
 
-    let url = `http://127.0.0.1:8000/api/update/${task.id}/`
+    let url = `https://todo-appfullstack.herokuapp.com/api/update/${task.id}/`
     axios({
       url: url,
       method: 'POST',

@@ -21,7 +21,7 @@ export default function Login() {
 
   const handleSubmit = async(event) => {
     event.preventDefault();
-    await axios.post('http://127.0.0.1:8000/api/api-token-auth/',{
+    await axios.post('https://todo-appfullstack.herokuapp.com/api/api-token-auth/',{
         username: username,
         password: password
     })

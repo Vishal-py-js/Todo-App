@@ -18,7 +18,7 @@ export default function SignUp() {
 
   const handleSubmit = async(event) => {
     event.preventDefault();
-    await axios.post('http://127.0.0.1:8000/api/register/',{
+    await axios.post('https://todo-appfullstack.herokuapp.com/api/register/',{
         username: username,
         password: password,
         password2: password2

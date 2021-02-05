@@ -14,7 +14,7 @@ function Home() {
   const[editing, setEditing] = useState(false)
 
   useEffect(() => {
-    fetchTasks()
+    // fetchTasks()
   }, [])
 
   const fetchTasks = async() => {

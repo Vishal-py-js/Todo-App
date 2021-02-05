@@ -31,6 +31,23 @@
     <title>Todo List</title>
   </head>
   <body>
+    <nav style="background: rgb(12, 1, 29);" class="navbar navbar-expand-lg navbar-dark">
+      <a id='login-request' class="navbar-brand">Please Login/Signup to add todo items</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul id="user-detail" class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/"> <span class="sr-only">(current)</span></a></li>
+        </ul>
+          <div id="user-status" class="form-inline my-2 my-lg-0">
+              <a style="margin-right: 10px;" href="/login"  class="btn btn-warning">Login</a>
+              <a href="/signup"  class="btn btn-warning">SignUp</a>
+          </div>
+      </div>
+    </nav>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--

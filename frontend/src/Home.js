@@ -23,6 +23,9 @@ function Home() {
             'Authorization': `Token ${localStorage.getItem('Token')}`
             }
         })
+        .catch(error=>{
+          console.log(error)
+        })
     const response = res.data
     setTodoList(response)
     let innhtml = document.getElementById('user-status')
@@ -57,6 +60,9 @@ function Home() {
            'Authorization': `Token ${localStorage.getItem('Token')}`
       }
     })
+    .catch(error => {
+      console.log(error)
+    })
     window.location.reload()
   }
 
@@ -74,6 +80,9 @@ function Home() {
         'Authorization': `Token ${localStorage.getItem('Token')}`
         }
     })
+    .catch(error => {
+      console.log(error)
+    })
     window.location.reload()
   }
 
@@ -88,6 +97,9 @@ function Home() {
         'Authorization': `Token ${localStorage.getItem('Token')}`
         },
       data:task
+    })
+    .catch(error => {
+      console.log(error)
     })
     window.location.reload()
   }

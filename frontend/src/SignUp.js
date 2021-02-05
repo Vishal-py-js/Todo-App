@@ -20,9 +20,13 @@ export default function SignUp() {
     event.preventDefault();
     await axios.post('https://todo-appfullstack.herokuapp.com/api/register/',{
         username: username,
+
         password: password,
         password2: password2
     })
+    .catch(error => {
+        console.log(error)
+      })
     .then(() => {
         history.push('/login')
     })

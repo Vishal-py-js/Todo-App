@@ -30,6 +30,9 @@ export default function Login() {
         localStorage.setItem('Token', tokenauth)
         localStorage.setItem('User', username) 
     })
+    .catch(error => {
+        console.log(error)
+      })
     .then(() => {
         history.push('/')
     })

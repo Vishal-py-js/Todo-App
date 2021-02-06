@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import './App.css';
 import axios from 'axios'
+import Url from './Constants'
 
 
 function Home() {
@@ -14,11 +15,11 @@ function Home() {
   const[editing, setEditing] = useState(false)
 
   useEffect(() => {
-    // fetchTasks()
+      fetchTasks()
   }, [])
 
   const fetchTasks = async() => {
-    const res = await axios.get('https://todo-appfullstack.herokuapp.com/api/',{
+    const res = await axios.get(`${Url}`,{
         headers:{
             'Authorization': `Token ${localStorage.getItem('Token')}`
             }
@@ -31,7 +32,8 @@ function Home() {
     let innhtml = document.getElementById('user-status')
     let innhtml2 = document.getElementById('login-request')
     if (localStorage.getItem('Token')) {
-        innhtml.innerHTML = '<a href="/login" class="btn btn-warning">Logout</a>'
+        innhtml.innerHTML = `<a href="/login" class="btn btn-warning">Logout</a>`;
+        innhtml.onclick = () => localStorage.removeItem('Token')
         innhtml2.innerHTML = `Welcome, ${localStorage.getItem('User')}`
     } 
   }
@@ -46,10 +48,10 @@ function Home() {
   const handleSubmit = async(e) => {
     e.preventDefault()
 
-    let url = 'https://todo-appfullstack.herokuapp.com/api/create/'
+    let url = `${Url}create/`
 
     if(editing==true) {
-      url = `https://todo-appfullstack.herokuapp.com/${activeItems.id}/`
+      url = `${Url}update/${activeItems.id}/`
       setEditing(false)
     }
     await axios({
@@ -74,7 +76,7 @@ function Home() {
   const deleteItem = (task) => {
 
     axios({
-      url: `https://todo-appfullstack.herokuapp.com/api/delete/${task.id}/`,
+      url: `${Url}delete/${task.id}/`,
       method: 'DELETE',
       headers:{
         'Authorization': `Token ${localStorage.getItem('Token')}`
@@ -89,7 +91,7 @@ function Home() {
   const strikeUnstrike = (task) => {
     task.completed = !task.completed
 
-    let url = `https://todo-appfullstack.herokuapp.com/api/update/${task.id}/`
+    let url = `${Url}update/${task.id}/`
     axios({
       url: url,
       method: 'POST',

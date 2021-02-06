@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import "./Login.css";
 import axios from 'axios'
 import  { useHistory } from 'react-router-dom'
+import Url from './Constants'
 
 
 export default function Login() {
@@ -21,7 +22,7 @@ export default function Login() {
 
   const handleSubmit = async(event) => {
     event.preventDefault();
-    await axios.post('https://todo-appfullstack.herokuapp.com/api/api-token-auth/',{
+    await axios.post(`${Url}api-token-auth/`,{
         username: username,
         password: password
     })
